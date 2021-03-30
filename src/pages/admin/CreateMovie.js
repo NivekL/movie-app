@@ -38,10 +38,10 @@ function CreateMovie() {
             <h1>Create Movie</h1>
 
             <form onSubmit={handleSubmit}>
-                <input type="text" name="movieTitle" onChange={handleChange} value={movie.value}/>
-                <input type="text" name="movieYear" onChange={handleChange} value={movie.value}/>
-                <input type="text" name="movieGenre" onChange={handleChange} value={movie.value}/>
-                <textarea name="movieDescription" onChange={handleChange} cols="30" rows="10" value={movie.value}></textarea>
+                <input type="text" name="title" onChange={handleChange} value={movie.title}/>
+                <input type="text" name="year" onChange={handleChange} value={movie.year}/>
+                <input type="text" name="genre" onChange={handleChange} value={movie.genre}/>
+                <textarea type="text" name="description" onChange={handleChange} cols="30" rows="10" value={movie.description}></textarea>
                 <button>Create</button>
                 <Link to="/admin">&larr; Back</Link>
             </form>
