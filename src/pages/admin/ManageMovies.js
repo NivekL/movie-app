@@ -1,7 +1,24 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from "react-router-dom";
 import MovieList from '../../components/MovieList';
+import styled from 'styled-components';
 // import Home from '../Home';
+
+const PageTitle = styled.h1`
+    text-align: center;
+`
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: blue;
+`
+
+const Div = styled.div`
+    position: relative;
+    margin-left: 77.5%;
+    margin-bottom: 20px;
+    width:100px;
+`
+
 
 
 function ManageMovies() {
@@ -39,8 +56,10 @@ function ManageMovies() {
     
     return (
         <div>
-            <h1>Manage Movies</h1>
-            <Link to="/create-movie">Create movie</Link>
+            <PageTitle>Manage Movies</PageTitle>
+            <Div>
+                <StyledLink to="/create-movie">Create movie</StyledLink>
+            </Div>
             <MovieList movies={movies} deleteMovie={deleteMovie} />
             
         </div>

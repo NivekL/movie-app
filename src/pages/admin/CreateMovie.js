@@ -1,5 +1,53 @@
 import React, { useState } from 'react'
 import {Link, useHistory} from "react-router-dom";
+import styled from 'styled-components';
+
+const Div = styled.div`
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+`
+const PageTitle = styled.h1 `
+    text-align: center;
+`
+const Form = styled.form `
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 400px;
+    margin: 0 auto;
+`
+const InputTitle = styled.input`
+    margin-bottom: 20px;
+    padding: 8px;
+`
+const InputYear = styled.input`
+    margin-bottom: 20px;
+    padding: 8px;
+`
+const Select = styled.select`
+    margin-bottom: 20px;
+    padding: 8px;
+`
+const Textarea = styled.textarea`
+    margin-bottom: 20px;
+    padding: 8px;
+`
+const Button = styled.button`
+    margin-bottom: 20px;
+    padding: 8px;
+    background-color: cadetblue;
+    border: none;
+    border-radius: 5px;
+`
+const StyledLink = styled(Link)`
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+`
 
 function CreateMovie() {
     const [movie, setMovie] = useState({});
@@ -34,21 +82,22 @@ function CreateMovie() {
     }
 
     return (
-        <div>
-            <h1>Create Movie</h1>
-
-            <form onSubmit={handleSubmit}>
-                <input type="text" name="title" onChange={handleChange} value={movie.title}/>
-                <input type="text" name="year" onChange={handleChange} value={movie.year}/>
-                <select type="text" name="genre" onChange={handleChange} value={movie.genre}>
+        <Div>
+            <PageTitle>Create Movie</PageTitle>
+        
+            <Form onSubmit={handleSubmit}>
+                <InputTitle type="text" name="title" onChange={handleChange} value={movie.title}/>
+                <InputYear type="text" name="year" onChange={handleChange} value={movie.year}/>
+                <Select type="text" name="genre" onChange={handleChange} value={movie.genre}>
+                    <option>Choose genre</option>
                     <option value="movie">Movie</option>
                     <option value="series">Series</option>
-                </select>
-                <textarea type="text" name="description" onChange={handleChange} cols="30" rows="10" value={movie.description}></textarea>
-                <button>Create</button>
-                <Link to="/admin">&larr; Back</Link>
-            </form>
-        </div>
+                </Select>
+                <Textarea type="text" name="description" onChange={handleChange} cols="30" rows="10" value={movie.description}></Textarea>
+                <Button>Create</Button>
+                <StyledLink to="/admin">&larr; Back</StyledLink>
+            </Form>
+        </Div>
     )
 }
 

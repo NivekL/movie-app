@@ -1,5 +1,18 @@
 import React, {useState, useEffect} from 'react';
-import Movie from './Movie'
+import Movies from '../components/Movies';
+import styled from 'styled-components';
+
+const Header = styled.h1`
+    text-align: center;
+    margin-bottom: 40px;
+`
+const Div = styled.div`
+    width: 1440px;
+    margin: 0 auto; 
+    display: flex; 
+    justify-content: center;
+    flex-wrap: wrap;
+`
 
 function Home() {
     const [movies, setMovies] = useState([]);
@@ -24,12 +37,14 @@ function Home() {
     
     return (
         <div>
-            <h1>Movies</h1>
+            <Header>Movies</Header>
+            <Div>
             {
-                movies.map( movie => (
-                    <Movie key={movie['_id']} movie={movie} pageId="home" />
-                ))
+                movies && movies.map( movie => {
+                    return <Movies key={movie['_id']} movie={movie} />
+                    })
             }
+            </Div>
         </div>
     )
 }

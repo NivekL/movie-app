@@ -2,6 +2,7 @@ import './App.css';
 import ManageMovies from './pages/admin/ManageMovies';
 import CreateMovie from './pages/admin/CreateMovie';
 import UpdateMovies from './pages/admin/UpdateMovies';
+import Movie from './pages/Movie'
 import Home from './pages/Home';
 import Nav from './components/Nav';
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="/admin" component={ManageMovies} />
             <Route path="/create-movie" component={CreateMovie} />
             <Route path="/update-movies/:id" component={UpdateMovies} />
+            <Route path="/movie/:id" component={Movie} />
           </Switch>
       </div>
     </Router>
