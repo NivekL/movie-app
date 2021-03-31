@@ -1,6 +1,7 @@
-import React from 'react'
+import React from 'react';
+import {Link} from "react-router-dom";
 
-function Movie({movie, deleteMovie}) {
+function Movie({movie, deleteMovie, pageId}) {
 
     const handleDelete = () => {
         deleteMovie(movie['_id']);
@@ -13,8 +14,15 @@ function Movie({movie, deleteMovie}) {
                <p>{movie.description}</p>
                <p>{movie.year}</p>
                <p>{movie.genre}</p>
-            </li> 
-            <button onClick={handleDelete}>Delete</button>
+            </li>
+            {
+                pageId === "home" 
+                ? ''
+                : <div>
+                    <button onClick={handleDelete}>Delete</button>  
+                    <Link to={`/update-movies/${movie['_id']}`}><button>Update</button></Link>
+                  </div>
+            } 
         </div>
     )
 }
