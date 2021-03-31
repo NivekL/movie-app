@@ -40,7 +40,10 @@ function CreateMovie() {
             <form onSubmit={handleSubmit}>
                 <input type="text" name="title" onChange={handleChange} value={movie.title}/>
                 <input type="text" name="year" onChange={handleChange} value={movie.year}/>
-                <input type="text" name="genre" onChange={handleChange} value={movie.genre}/>
+                <select type="text" name="genre" onChange={handleChange} value={movie.genre}>
+                    <option value="movie">Movie</option>
+                    <option value="series">Series</option>
+                </select>
                 <textarea type="text" name="description" onChange={handleChange} cols="30" rows="10" value={movie.description}></textarea>
                 <button>Create</button>
                 <Link to="/admin">&larr; Back</Link>
