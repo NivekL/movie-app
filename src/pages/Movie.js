@@ -1,7 +1,8 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {Link} from "react-router-dom";
 import poster from '../img/movie-poster.jpg';
 import styled from 'styled-components';
+import {motion} from 'framer-motion'
 
 const MovieContainer = styled.div `
     width: 960px;
@@ -17,7 +18,9 @@ const MovieInnerWrap = styled.div `
 
 const InfoWrap = styled.div `
     width: 40%;
-    margin: 40px 0 0 30px;
+    margin: 0 0 0 30px;
+    border-left: 2px solid #dadada;
+    padding-left: 26px;
 `
 
 const StyledLink = styled(Link)`
@@ -28,6 +31,23 @@ const StyledLink = styled(Link)`
   text-align: center;
   font-size: 23px;
 `;
+
+/* Animation Variants */
+const movieVariant = {
+    hidden: {
+        y: 100, 
+        opacity: 0
+    },
+    visible: {
+        y: 0, 
+        opacity: 1,
+
+        transition: { 
+            duration: 0.5,
+            delay: 0.2
+        }
+    }
+}
 
 function Movie({match}) {
 
@@ -52,11 +72,15 @@ function Movie({match}) {
     }
     
     return (
-        <div>  
+        <motion.div
+            variants={movieVariant}
+            initial="hidden"
+            animate="visible"
+        >
             <StyledLink to={'/'}>&larr; Back</StyledLink>
             <MovieContainer>
                 <MovieInnerWrap>
-                <img src={poster} alt="poster" width="400" height="570"/>
+                <img src={poster} alt="poster" width="360" height="500"/>
                     <InfoWrap>
                         <h2>{movie.title}</h2>
                         <p>{movie.description}</p>
@@ -64,7 +88,7 @@ function Movie({match}) {
                     </InfoWrap>
                 </MovieInnerWrap>
             </MovieContainer>
-        </div>
+        </motion.div>
     )
 }
 

@@ -5,20 +5,28 @@ import styled from 'styled-components'
 
 
 const Container = styled.div `
-    margin: 0 20px 30px 0;
+    margin: 0 20px 30px 20px;
+    display: flex;
+    flex-direction: column;
 `
 
 const StyledLink = styled(Link)`
   color: black;
   text-decoration: none;
+  border: 1px solid black;
+  width: 90px;
+  border-radius: 3px;
+  padding: 2px;
+  text-align: center;
 `;
 
 const List = styled.li `
     list-style-type: none;
+    width: 250px;
 `
 const Text = styled.div `
     width: 250px;
-    margin-right: 40px;
+    
 `
 
 function Movies({movie}) {
@@ -33,7 +41,7 @@ function Movies({movie}) {
                 <p></p>
                </Text>
             </List>
-            <StyledLink to={`/movie/${movie['_id']}`}>Read more...</StyledLink>
+            <StyledLink to={`/movie/${movie['_id']}`}>Read more</StyledLink>
         </Container>
     )
 }

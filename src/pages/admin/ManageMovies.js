@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {Link} from "react-router-dom";
 import MovieList from '../../components/MovieList';
 import styled from 'styled-components';
-// import Home from '../Home';
+import {motion} from 'framer-motion'
 
-const PageTitle = styled.h1`
+const PageTitle = styled(motion.h1)`
     text-align: center;
 `
 const StyledLink = styled(Link)`
@@ -19,7 +19,37 @@ const Div = styled.div`
     width:100px;
 `
 
+/* Animation variants*/
+const titleVariant = {
+    hidden: {
+        y: 100, 
+        opacity: 0
+    },
+    visible: {
+        y: 0, 
+        opacity: 1,
 
+        transition: { 
+            duration: 0.5
+        }
+    }
+}
+
+const movieTableVariant = {
+    hidden: {
+        y: 100, 
+        opacity: 0
+    },
+    visible: {
+        y: 0, 
+        opacity: 1,
+
+        transition: {
+            delay: 0.5, 
+            duration: 0.3
+        }
+    }
+}
 
 function ManageMovies() {
     const [movies, setMovies] = useState([]);
@@ -56,12 +86,23 @@ function ManageMovies() {
     
     return (
         <div>
-            <PageTitle>Manage Movies</PageTitle>
-            <Div>
-                <StyledLink to="/create-movie">Create movie</StyledLink>
-            </Div>
-            <MovieList movies={movies} deleteMovie={deleteMovie} />
-            
+            <PageTitle
+                variants={titleVariant}
+                initial="hidden"
+                animate="visible"
+            >
+                Manage Movies
+            </PageTitle>
+            <motion.div
+                variants={movieTableVariant}
+                initial="hidden"
+                animate="visible"
+            >
+                <Div>
+                    <StyledLink to="/create-movie">Create movie</StyledLink>
+                </Div>
+                <MovieList movies={movies} deleteMovie={deleteMovie} />
+            </motion.div>
         </div>
     )
 }
