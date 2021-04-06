@@ -2,16 +2,18 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useHistory} from "react-router-dom";
 import styled from 'styled-components';
+import {motion} from 'framer-motion'
+import {titleVariant, containerVariant} from '../../animation'
 
 const Div = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
 `
-const PageTitle = styled.h1 `
+const PageTitle = styled(motion.h1) `
     text-align: center;
 `
-const Form = styled.form `
+const Form = styled(motion.form) `
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -102,9 +104,18 @@ function UpdateMovie({ match }) {
 
     return (
         <Div>
-            <PageTitle>Update Movie</PageTitle>
+            <PageTitle
+                variants={titleVariant}
+                initial="hidden"
+                animate="visible"
+            >Update Movie
+            </PageTitle>
         
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit}
+                variants={containerVariant}
+                initial="hidden"
+                animate="visible"
+            >
                 <InputTitle type="text" name="title" onChange={handleChange} value={movie.title}/>
                 <InputYear type="text" name="year" onChange={handleChange} value={movie.year}/>
                 <Select type="text" name="genre" onChange={handleChange} value={movie.genre}>

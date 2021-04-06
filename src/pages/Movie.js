@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import poster from '../img/movie-poster.jpg';
 import styled from 'styled-components';
 import {motion} from 'framer-motion'
+import {containerVariant} from '../animation'
 
 const MovieContainer = styled.div `
     width: 960px;
@@ -32,23 +33,6 @@ const StyledLink = styled(Link)`
   font-size: 23px;
 `;
 
-/* Animation Variants */
-const movieVariant = {
-    hidden: {
-        y: 100, 
-        opacity: 0
-    },
-    visible: {
-        y: 0, 
-        opacity: 1,
-
-        transition: { 
-            duration: 0.5,
-            delay: 0.2
-        }
-    }
-}
-
 function Movie({match}) {
 
     const [movie, setMovie] = useState({});
@@ -73,7 +57,7 @@ function Movie({match}) {
     
     return (
         <motion.div
-            variants={movieVariant}
+            variants={containerVariant}
             initial="hidden"
             animate="visible"
         >

@@ -1,35 +1,37 @@
 import React, { useState } from 'react'
 import {Link, useHistory} from "react-router-dom";
 import styled from 'styled-components';
+import {motion} from 'framer-motion'
+import {titleVariant, containerVariant} from '../../animation'
 
 const Div = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
 `
-const PageTitle = styled.h1 `
+const PageTitle = styled(motion.h1) `
     text-align: center;
 `
-const Form = styled.form `
+const Form = styled(motion.form) `
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 400px;
     margin: 0 auto;
 `
-const InputTitle = styled.input`
+const InputTitle = styled(motion.input)`
     margin-bottom: 20px;
     padding: 8px;
 `
-const InputYear = styled.input`
+const InputYear = styled(motion.input)`
     margin-bottom: 20px;
     padding: 8px;
 `
-const Select = styled.select`
+const Select = styled(motion.select)`
     margin-bottom: 20px;
     padding: 8px;
 `
-const Textarea = styled.textarea`
+const Textarea = styled(motion.textarea)`
     margin-bottom: 20px;
     padding: 8px;
 `
@@ -83,17 +85,26 @@ function CreateMovie() {
 
     return (
         <Div>
-            <PageTitle>Create Movie</PageTitle>
+            <PageTitle
+                variants={titleVariant}
+                initial="hidden"
+                animate="visible"
+            >Create Movie
+            </PageTitle>
         
-            <Form onSubmit={handleSubmit}>
-                <InputTitle type="text" name="title" onChange={handleChange} value={movie.title}/>
-                <InputYear type="text" name="year" onChange={handleChange} value={movie.year}/>
-                <Select type="text" name="genre" onChange={handleChange} value={movie.genre}>
+            <Form onSubmit={handleSubmit}
+                variants={containerVariant}
+                initial="hidden"
+                animate="visible"
+            >
+                <InputTitle drag type="text" name="title" onChange={handleChange} value={movie.title} placeholder='Title' autoComplete='off'/>
+                <InputYear drag type="text" name="year" onChange={handleChange} value={movie.year} placeholder='Year' autoComplete='off'/>
+                <Select drag type="text" name="genre" onChange={handleChange} value={movie.genre}>
                     <option>Choose genre</option>
                     <option value="movie">Movie</option>
                     <option value="series">Series</option>
                 </Select>
-                <Textarea type="text" name="description" onChange={handleChange} cols="30" rows="10" value={movie.description}></Textarea>
+                <Textarea drag type="text" name="description" onChange={handleChange} cols="30" rows="10" value={movie.description} placeholder='Description'></Textarea>
                 <Button>Create</Button>
                 <StyledLink to="/admin">&larr; Back</StyledLink>
             </Form>

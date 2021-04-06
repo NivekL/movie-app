@@ -31,7 +31,7 @@ function MovieList({movies, deleteMovie}) {
                 </tr>
             </thead>
             {
-                movies && movies.map( movie => (
+                movies.map( movie => (
                     <MovieTable key={movie['_id']} movie={movie} deleteMovie={deleteMovie}/>
                 ))
             }

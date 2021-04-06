@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import MovieList from '../../components/MovieList';
 import styled from 'styled-components';
 import {motion} from 'framer-motion'
+import {titleVariant, containerVariant} from '../../animation'
 
 const PageTitle = styled(motion.h1)`
     text-align: center;
@@ -18,38 +19,6 @@ const Div = styled.div`
     margin-bottom: 20px;
     width:100px;
 `
-
-/* Animation variants*/
-const titleVariant = {
-    hidden: {
-        y: 100, 
-        opacity: 0
-    },
-    visible: {
-        y: 0, 
-        opacity: 1,
-
-        transition: { 
-            duration: 0.5
-        }
-    }
-}
-
-const movieTableVariant = {
-    hidden: {
-        y: 100, 
-        opacity: 0
-    },
-    visible: {
-        y: 0, 
-        opacity: 1,
-
-        transition: {
-            delay: 0.5, 
-            duration: 0.3
-        }
-    }
-}
 
 function ManageMovies() {
     const [movies, setMovies] = useState([]);
@@ -94,7 +63,7 @@ function ManageMovies() {
                 Manage Movies
             </PageTitle>
             <motion.div
-                variants={movieTableVariant}
+                variants={containerVariant}
                 initial="hidden"
                 animate="visible"
             >

@@ -8,7 +8,6 @@ const Ul = styled.ul`
     padding: 0;
 
 `
-
 const StyledLink = styled(Link)`
     margin: 20px;
     font-size: 16px;
@@ -16,7 +15,6 @@ const StyledLink = styled(Link)`
     color: #000;
     text-decoration: none;
 `
-
 function Nav() {
     return (
         <div>

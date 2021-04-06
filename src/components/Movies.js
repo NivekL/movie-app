@@ -16,9 +16,9 @@ const StyledLink = styled(Link)`
   border: 1px solid black;
   width: 90px;
   border-radius: 3px;
-  padding: 2px;
+  padding-bottom: 3px;
   text-align: center;
-`;
+`
 
 const List = styled.li `
     list-style-type: none;
