@@ -26,7 +26,13 @@ const List = styled.li `
 `
 const Text = styled.div `
     width: 250px;
-    
+`
+
+const Description = styled.p `
+    white-space: nowrap; 
+    width: inherit; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
 `
 
 function Movies({movie}) {
@@ -36,7 +42,7 @@ function Movies({movie}) {
                <img src={poster} alt="poster" width="250" height="350"/>
                <Text>
                 <h3>{movie.title}</h3>
-                <p>{movie.description}</p>
+                <Description>{movie.description.substring(0,80)}</Description>
                 <p>{movie.year} | <span>{movie.genre}</span></p>
                 <p></p>
                </Text>

@@ -36,7 +36,7 @@ function Home() {
                 throw new Error('HTTP Error! status: ' + response.status);
             }
             const data = await response.json();
-            setMovies(data);
+            setMovies(data.reverse());
             console.log(data);
         } catch (error) {
             console.log(error);
