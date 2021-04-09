@@ -8,6 +8,10 @@ const Ul = styled.ul`
     padding: 0;
 
 `
+const Title = styled.h1 `
+    text-align: center;
+`
+
 const StyledLink = styled(Link)`
     margin: 20px;
     font-size: 16px;
@@ -18,6 +22,7 @@ const StyledLink = styled(Link)`
 function Nav() {
     return (
         <div>
+        <Title>FilmTime</Title>
             <Ul>
                 <StyledLink to="/">Home</StyledLink>
                 <StyledLink to="/admin">Admin</StyledLink>
